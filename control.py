@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+##!/usr/bin/env python
 # -*- coding: utf-8 -*- 
 
 import subprocess
@@ -12,11 +12,12 @@ import cherrypy
 from os import listdir
 from os.path import isfile, join
 
-cherrypy.config.update({'server.socket_host':'0.0.0.0'}) # change to your IP here
-cherrypy.config.update({'server.socket_port': 8080})
+#cherrypy.config.update({'server.socket_host':'10.0.1.17'}) #hs
+#cherrypy.config.update({'server.socket_host':'192.168.178.67'}) #fhfl
+cherrypy.config.update({'server.socket_host':'192.168.178.167'}) #@home
+cherrypy.config.update({'server.socket_port': 8080}) 
 pics_path = "docs/"
-screen_timer = 11; #timer in seconds
-
+screen_timer = 11;
 class StringGenerator(object):
     @cherrypy.expose
     def index(self):
@@ -61,7 +62,7 @@ class StringGenerator(object):
 		<form class="reboot_button" action="reboot_pi">
                   <button type="submit">Reboot</button>
                 </form>
-		<form action="set_timer" method="post">
+		<form class="timer_form" action="set_timer" method="post">
 		  <input type="number" class="timer_box" name="time" value = "%s">
 		  <button class="timer_button" type="submit">Set timer</button>
 		</form>

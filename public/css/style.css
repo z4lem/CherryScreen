@@ -3,20 +3,19 @@ input[type="file"] {
 }
 
 .timer_button{
-   margin: 20px 20px 0 5px;
+   margin: 0 0 0 10px;
    float:left;
    cursor: pointer;
    width: 90px;
-   height: 100px;
-
+   height: 40px;
 }
 
 .timer_box{
-   margin: 20px 5px 0 20px;
+   /*margin: 20px 5px 0 20px;*/
    float:left;
    cursor: pointer;
-   width: 20px;
-   height: 100px;
+   width: 50px;
+   height: 40px;
 }
 
 .picdiv{
@@ -33,8 +32,8 @@ input[type=checkbox] {
 
 .add_form{
   width: 150px;
-  height: 100px;
-  margin: 0 0 20px 0;
+  height: 80px;
+  margin: 0 0 0 0;
 }
 
 .picbox {
@@ -47,12 +46,14 @@ input[type=checkbox] {
 
 .buttons{
   float: left;
+  width: 150px;
+  margin: 0 0 0 20px;
 }
 
 .delete_button {
   width: 150px;
   height: 40px;
-  margin: 0 0 20px 20px;
+  margin: 20px 0 20px 0;
   cursor: pointer;
 }
 
@@ -60,7 +61,35 @@ input[type=checkbox] {
   cursor: pointer;
   width: 150px;
   height: 40px;
-  margin: 0 0 20px 20px;
+  margin: 10px 0 0 0;
+}
+
+.start_button {
+  width: 150px;
+  height: 40px;
+  /*margin: 0 0 0 0*/;
+  cursor: pointer;
+}
+
+.shutdown_button {
+  width: 150px;
+  height: 40px;
+  margin: 0 0 20px 0;
+  cursor: pointer;
+}
+
+.reboot_button {
+  width: 150px;
+  height: 40px;
+  margin: 0 0 20px 0;
+  cursor: pointer;
+}
+
+button {
+  width: 150px;
+  height: 40px;
+  margin: 0 0 0 0;
+  cursor: pointer;
 }
 
 h3 {
@@ -77,7 +106,7 @@ img {
 .custom-file-upload {
     width: 20px;
     height: 60px;
-    margin: 20px 0 20px 20px;
+    margin: 0 0 20px 0;
     cursor: pointer;
 }
 
