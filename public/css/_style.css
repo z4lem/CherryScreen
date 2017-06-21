@@ -1,0 +1,130 @@
+input[type="file"] {
+    display: none;
+}
+
+.timer_button{
+   margin: 20px 20px 0 5px;
+   float:left;
+   cursor: pointer;
+   width: 90px;
+   height: 100px;
+
+}
+
+.timer_box{
+   margin: 20px 5px 0 20px;
+   float:left;
+   cursor: pointer;
+   width: 20px;
+   height: 100px;
+}
+
+.picdiv{
+float: left;
+width: 80%;
+}
+
+input[type=checkbox] {
+ margin: 20px 20px 20px 10px;
+ transform: scale(2);
+ float:left;
+ cursor: pointer;
+}
+
+.add_form{
+  width: 150px;
+  height: 100px;
+  margin: 0 0 20px 0;
+}
+
+.picbox {
+  margin: 20px;
+  width: 650px; 
+  height: 600px; 
+  float: left;
+  overflow-y: scroll;
+}
+
+.buttons{
+  float: left;
+}
+
+.delete_button {
+  width: 150px;
+  height: 40px;
+  margin: 0 0 20px 20px;
+  cursor: pointer;
+}
+
+.add_button {
+  cursor: pointer;
+  width: 150px;
+  height: 40px;
+  margin: 0 0 20px 20px;
+}
+
+button {
+  cursor: pointer;
+  width: 150px;
+  height: 40px;
+  margin: 0 0 20px 20px;
+}
+
+ul {
+  list-style-type: none;
+  width: 500px;
+}
+
+h3 {
+  font: bold 20px/1.5 Helvetica, Verdana, sans-serif;
+  float:left;
+}
+
+img {
+  margin: 0 20px 20px 20px;
+  width: 200px;
+  float: left;
+}
+
+li p {
+  font: 200 12px/1.5 Georgia, Times New Roman, serif;
+}
+
+li {
+  padding: 10px;
+  overflow: auto;
+}
+
+li:hover {
+  background: #eee;
+  cursor: pointer;
+}
+
+* {margin: 20px; padding: 0;}
+ 
+div {
+  margin: 20px;
+}
+ 
+ul {
+  list-style-type: none;
+  width: 500px;
+}
+ 
+li img {
+  float: left;
+  margin: 0 15px 0 15px;
+  width: 15%;
+}
+
+.custom-file-upload {
+    width: 20px;
+    height: 60px;
+    margin: 20px 0 20px 20px;
+    cursor: pointer;
+}
+
+.circles-parent { text-align:center; }
+.circle         { background:green; border-radius:50%; display:inline-block; margin:0 15px; }
+
+
