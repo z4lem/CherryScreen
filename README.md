@@ -4,7 +4,7 @@ Simple InfoScreen application for the use with a Raspberry PI and a HDMI Screen.
 
 #### Reminder
 
-It has not been fully tested yet :)
+Has been just lightly tested :)
 
 #### Description
 
@@ -22,7 +22,7 @@ Currently only .jpg format is enabled.
 
 #### Installation
 
-    1. download unzip the folder somewhere.
+    1. download unzip the folder somewhere on your PI.
     2. If you want to prepare some pictures, put them in programms docs/ folder in .jpg format
     3. Change the IP address of the PI (and the port if needed) on the first lines of the control.py script, e.g: 
        cherrypy.config.update({'server.socket_host':'192.1.1.111'})
