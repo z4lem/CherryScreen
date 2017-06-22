@@ -34,8 +34,11 @@ Currently only .jpg format is enabled.
 
 #### ToDo  
 
-- check out what happens if doc dik is empty and fbi is started
+- clean up code
+- switch to python3 convention
+- use 'stringbuilder' array for html strings
+- catch up uploading exc. if no file has been preselected
+- check out what happens if doc dir is empty and fbi is started
 - disable timer, if only one picture is in the dir or timer is set to 0 (show only the first one?)
 - enable support for more file formats
-- css file does not entire applies
-- fix ugly security failures
+- fix some ugly security failures
