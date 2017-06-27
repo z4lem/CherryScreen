@@ -12,12 +12,15 @@ import cherrypy
 from os import listdir
 from os.path import isfile, join
 
+cherrypy.config.update({'server.socket_host':'0.0.0.0'}) #hs
 #cherrypy.config.update({'server.socket_host':'10.0.1.17'}) #hs
 #cherrypy.config.update({'server.socket_host':'192.168.178.67'}) #fhfl
-cherrypy.config.update({'server.socket_host':'192.168.178.167'}) #@home
+#cherrypy.config.update({'server.socket_host':'192.168.178.167'}) #@home
 cherrypy.config.update({'server.socket_port': 8080}) 
-pics_path = "docs/"
+pics_path = "/home/pi/CherryServer/docs/"
 screen_timer = 11;
+lamp_color = "green"
+
 class StringGenerator(object):
     @cherrypy.expose
     def index(self):
@@ -40,11 +43,13 @@ class StringGenerator(object):
 	html_string +="""	
 	      </div>
 	        <div class="buttons">
+		<div class="circles-parent">
+                   <div class="circle" style="background: %s;"></div>
+                </div>
 		<input class="delete_button" type= "submit" name="pics" value="Delete selected"/>
 		</form>
 		<form class="add_form" action="add_pic" method='post' enctype='multipart/form-data'>
 		  <input type='file' class="inputfile" id="uploader" name='jpgFile'/>
-		  <label class="custom-file-upload" for="uploader">Search...</label> 
               	  <input class="add_button" type="submit" value="Upload" />
             	</form>
 
@@ -66,35 +71,33 @@ class StringGenerator(object):
 		  <input type="number" class="timer_box" name="time" value = "%s">
 		  <button class="timer_button" type="submit">Set timer</button>
 		</form>
-		<div class="circles-parent">
-		   <div class="circle"></div>
-		</div>
 	      </div>
           </body>
-          </html>""" % (screen_timer)
+          </html>""" % (lamp_color, screen_timer)
 
 	return html_string
 	
     @cherrypy.config(**{'response.timeout': 3600})  # default is 300s
     @cherrypy.expose()
     def add_pic(self, jpgFile):
-        
-        try:
-            _tmpfilename = jpgFile.filename.split('/')[-1:][0]
-        except (IndexError, AttributeError):
-            _tmpfilename = 'undefined_name_{}.jpg'.format(uuid.uuid4())
-        try:
-            _tmpfilename = jpgFile.filename.split('\\')[-1:][0]
-        except (IndexError, AttributeError):
-            _tmpfilename = 'undefined_name_{}.jpg'.format(uuid.uuid4())
+        if not jpgFile.filename.endswith('/'):
+	        try:
+        	    _tmpfilename = jpgFile.filename.split('/')[-1:][0]
+	        except (IndexError, AttributeError):
+        	    _tmpfilename = 'undefined_name_{}.jpg'.format(uuid.uuid4())
+	        try:
+	            _tmpfilename = jpgFile.filename.split('\\')[-1:][0]
+	        except (IndexError, AttributeError):
+	            _tmpfilename = 'undefined_name_{}.jpg'.format(uuid.uuid4())
 
-        _CONFIRMATIONPATH = pics_path
+        	_CONFIRMATIONPATH = pics_path
 
-        _destination = path.join(_CONFIRMATIONPATH, _tmpfilename)
-
-        with open(_destination, 'wb') as f:
-            shutil.copyfileobj(jpgFile.file, f)
-        self.return_to_main()
+	        _destination = path.join(_CONFIRMATIONPATH, _tmpfilename)
+		
+		if not _destination.endswith('/'):
+	        	with open(_destination, 'wb') as f:
+		            shutil.copyfileobj(jpgFile.file, f)
+        self.return_to_main()	
 
     @cherrypy.expose
     def del_pic(self, **kwargs):
@@ -106,7 +109,9 @@ class StringGenerator(object):
 
     @cherrypy.expose
     def update_fbi(self):
-	os.system("fbi -d /dev/fb0 -a -T 2 -noverbose -t 5 docs/*.jpg")
+	os.system("fbi -d /dev/fb0 -T 2 -noverbose -t 5 /home/pi/CherryServer/docs/*.jpg")
+	global lamp_color
+	lamp_color = "green"
 	self.return_to_main()
 	
     @cherrypy.expose
@@ -117,6 +122,8 @@ class StringGenerator(object):
 
     @cherrypy.expose
     def stop_fbi(self):
+	global lamp_color
+	lamp_color = "red"
 	os.system("killall fbi")
        	self.return_to_main()
 
@@ -139,12 +146,14 @@ if __name__ == '__main__':
         },
         '/static': {
             'tools.staticdir.on': True,
-            'tools.staticdir.dir': './public'
+            'tools.staticdir.dir': '/home/pi/CherryServer/public'
         },
 	'/docs':{
 	  'tools.staticdir.on': True,
-	  'tools.staticdir.dir': './docs'
+	  'tools.staticdir.dir': '/home/pi/CherryServer/docs'
 	}
     }
 
+os.system("fbi -d /dev/fb0 -T 2 -noverbose -t 5 /home/pi/CherryServer/docs/*.jpg")
 cherrypy.quickstart(StringGenerator(), '/', conf)
+#raise cherrypy.HTTPRedirect("/update_fbi")

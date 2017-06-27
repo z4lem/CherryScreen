@@ -1,7 +1,3 @@
-input[type="file"] {
-    display: none;
-}
-
 .timer_button{
    margin: 0 0 0 10px;
    float:left;
@@ -119,4 +115,6 @@ img {
    border-radius:50%; 
    display:inline-block; 
    margin:0 15px;
+   width: 24%;
+   height: 4%;
  }
