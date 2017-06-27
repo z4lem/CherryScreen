@@ -1,4 +1,4 @@
-# ~ CherryScreen v0.1 ~
+# ~ CherryScreen v0.2 ~
 
 This is my first python project: a simple InfoScreen tool for the use with a Raspberry PI and a HDMI Screen.
 
