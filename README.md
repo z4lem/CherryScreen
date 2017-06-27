@@ -1,10 +1,10 @@
-# ~ CherryScreen v0.1 ~
+# ~ CherryScreen v0.2 ~
 
-Simple InfoScreen application for the use with a Raspberry PI and a HDMI Screen.
+This is my first python project: a simple InfoScreen tool for the use with a Raspberry PI and a HDMI Screen.
 
 #### Reminder
 
-It has not been fully tested yet :)
+Has been just lightly tested :)
 
 #### Description
 
@@ -22,20 +22,23 @@ Currently only .jpg format is enabled.
 
 #### Installation
 
-    1. download unzip the folder somewhere.
+    1. download unzip the folder on your PI under the default path /home/pi/CherryServer (or change paths in the console.py script manually)
     2. If you want to prepare some pictures, put them in programms docs/ folder in .jpg format
-    3. Change the IP address of the PI (and the port if needed) on the first lines of the control.py script, e.g: 
-       cherrypy.config.update({'server.socket_host':'192.1.1.111'})
+    3. (optional)Change the IP address of the PI (and the port if needed) on the first lines of the control.py script, e.g: 
+       cherrypy.config.update({'server.socket_host':'192.1.1.111'}) (default: webserer starts at device's ip adress)
        cherrypy.config.update({'server.socket_port': 8080})
-    4. start the control.py script as root in an own terminal session: 
+    4. start the control.py script as root in an own terminal session by 
        sudo python control.py
-    5. The Web Interface is now reachable from the local WiFi vie the IP address: http://192.1.1.111:8080
-    6. If it is not reachable, make sure any firewall isn't blocking (check out the port!)
+       or create a startup script
+    5. The Web Interface is reachable at device startup in the local WiFi via the device's IP address, e.g.:  http://192.1.1.111:8080
+    -> If it is not reachable, make sure any firewall isn't blocking (check out the port!)
 
 #### ToDo  
 
-- check out what happens if doc dik is empty and fbi is started
+- remove static paths
+- clean up code
+- switch to python3 convention
+- use 'stringbuilder' array for html strings
+- check out what happens if doc dir is empty and fbi is started
 - disable timer, if only one picture is in the dir or timer is set to 0 (show only the first one?)
 - enable support for more file formats
-- css file does not entire applies
-- fix ugly security failures
