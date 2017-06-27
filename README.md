@@ -22,7 +22,7 @@ Currently only .jpg format is enabled.
 
 #### Installation
 
-    1. download unzip the folder somewhere on your PI.
+    1. download unzip the folder on your PI under the default path /home/pi/CherryServer (or change paths in the console.py script manually)
     2. If you want to prepare some pictures, put them in programms docs/ folder in .jpg format
     3. (optional)Change the IP address of the PI (and the port if needed) on the first lines of the control.py script, e.g: 
        cherrypy.config.update({'server.socket_host':'192.1.1.111'}) (default: webserer starts at device's ip adress)
@@ -30,11 +30,12 @@ Currently only .jpg format is enabled.
     4. start the control.py script as root in an own terminal session by 
        sudo python control.py
        or create a startup script
-    5. The Web Interface is reachable at device startup in the local WiFi via the device's IP address, e.g.:            http://192.1.1.111:8080
+    5. The Web Interface is reachable at device startup in the local WiFi via the device's IP address, e.g.:  http://192.1.1.111:8080
     -> If it is not reachable, make sure any firewall isn't blocking (check out the port!)
 
 #### ToDo  
 
+- remove static paths
 - clean up code
 - switch to python3 convention
 - use 'stringbuilder' array for html strings
